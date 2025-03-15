@@ -136,7 +136,7 @@ export default function Home() {
       <div className="min-h-screen bg-gray-50 py-8 px-4">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-3xl font-bold text-center text-indigo-700 mb-8">
-            Online Learning Platform
+            Online Examination System
           </h1>
 
           {scoreHistory.length > 0 && (
@@ -192,7 +192,7 @@ export default function Home() {
                         setActiveQuiz(quiz);
                       }}
                     >
-                      Start Quiz
+                      Start Exam
                     </button>
                   </div>
                 </div>
@@ -209,7 +209,7 @@ export default function Home() {
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading quiz questions...</p>
+          <p className="text-gray-600">Loading Exam questions...</p>
         </div>
       </div>
     );
@@ -233,7 +233,7 @@ export default function Home() {
           <div className="p-1 bg-indigo-600"></div>
           <div className="p-8 text-center">
             <h2 className="text-2xl font-bold mb-6 text-gray-800">
-              Quiz Completed!
+              Exam Completed!
             </h2>
 
             <div className="mb-8">
@@ -247,7 +247,7 @@ export default function Home() {
 
             <div className="bg-indigo-50 p-4 rounded-lg mb-8">
               <h3 className="font-semibold text-indigo-800 mb-2">
-                Quiz Summary
+                Exam Summary
               </h3>
               <p className="text-gray-700">Quiz: {activeQuiz.title}</p>
               <p className="text-gray-700">
@@ -263,13 +263,13 @@ export default function Home() {
                   setActiveQuiz({ ...activeQuiz });
                 }}
               >
-                Retry Quiz
+                Retry Exam
               </button>
               <button
                 className="border border-gray-300 hover:bg-gray-100 text-gray-700 py-2 px-6 rounded-lg transition"
                 onClick={startNewQuiz}
               >
-                Return to All Quizzes
+                Return to All Questions
               </button>
             </div>
           </div>
@@ -299,7 +299,7 @@ export default function Home() {
               onClick={startNewQuiz}
               className="ml-4 text-gray-500 hover:text-gray-700 cursor-pointer"
             >
-              Exit Quiz
+              Exit Exam
             </button>
           </div>
         </div>
@@ -387,7 +387,7 @@ export default function Home() {
                   onClick={handleSubmit}
                   className="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-md transition"
                 >
-                  Submit Quiz
+                  Submit Answers
                 </button>
               )}
             </div>
