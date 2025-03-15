@@ -41,7 +41,7 @@ export default function Home() {
       title: "C++",
       topic: "Programming",
       difficulty: "Advanced",
-      category: "html",
+      category: "c",
       questions: [],
     },
     {
@@ -49,7 +49,7 @@ export default function Home() {
       title: "My SQL",
       topic: "Database",
       difficulty: "Advanced",
-      category: "html",
+      category: "sql",
       questions: [],
     },
   ]);
@@ -63,6 +63,7 @@ export default function Home() {
   const [score, setScore] = useState(null);
   const [loading, setLoading] = useState(false);
   const [timeLeft, setTimeLeft] = useState(0);
+  const [showReview, setShowReview] = useState(false);
 
   useEffect(() => {
     if (activeQuiz) {
@@ -145,6 +146,7 @@ export default function Home() {
   const startNewQuiz = () => {
     setActiveQuiz(null);
     setQuizCompleted(false);
+    setShowReview(false);
   };
 
   const formatTime = (seconds) => {
@@ -153,6 +155,66 @@ export default function Home() {
     return `${mins.toString().padStart(2, "0")}:${secs
       .toString()
       .padStart(2, "0")}`;
+  };
+
+  const renderReviewAnswers = () => {
+    return (
+      <div className="mt-8">
+        <h2 className="text-2xl font-bold mb-6 text-gray-800">
+          Review Answers
+        </h2>
+        {questions.map((question, index) => (
+          <div key={question.id} className="mb-6">
+            <h3 className="text-xl font-semibold text-gray-800 mb-4">
+              Question {index + 1}: {question.question}
+            </h3>
+            <div className="space-y-3">
+              {question.options.map((option, i) => (
+                <div
+                  key={i}
+                  className={`p-3 rounded-lg border-2 ${
+                    userAnswers[question.id] === i
+                      ? "border-indigo-500 bg-indigo-50"
+                      : "border-gray-200"
+                  } ${
+                    question.correctIndex === i
+                      ? "border-green-500 bg-green-50"
+                      : ""
+                  }`}
+                >
+                  <div className="flex items-center">
+                    <div
+                      className={`w-6 h-6 flex items-center justify-center rounded-full border-2 mr-3 ${
+                        userAnswers[question.id] === i
+                          ? "border-indigo-500 bg-indigo-500 text-white"
+                          : question.correctIndex === i
+                          ? "border-green-500 bg-green-500 text-white"
+                          : "border-gray-300"
+                      }`}
+                    >
+                      {userAnswers[question.id] === i && (
+                        <svg
+                          className="w-4 h-4"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      )}
+                    </div>
+                    <span className="text-gray-800">{option}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    );
   };
 
   if (!activeQuiz) {
@@ -295,7 +357,15 @@ export default function Home() {
               >
                 Return to All Questions
               </button>
+              <button
+                className="bg-green-600 hover:bg-green-700 text-white py-2 px-6 rounded-lg transition"
+                onClick={() => setShowReview(true)}
+              >
+                Review Answers
+              </button>
             </div>
+
+            {showReview && renderReviewAnswers()}
           </div>
         </div>
       </div>
