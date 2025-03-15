@@ -6,7 +6,7 @@ export default function Home() {
   const [quizzes, setQuizzes] = useState([
     {
       id: 1,
-      title: "Java Quiz",
+      title: "Java",
       topic: "Programming",
       difficulty: "Intermediate",
       category: "java",
@@ -14,7 +14,7 @@ export default function Home() {
     },
     {
       id: 2,
-      title: "React Quiz",
+      title: "React",
       topic: "Web Development",
       difficulty: "Beginner",
       category: "react",
@@ -22,10 +22,34 @@ export default function Home() {
     },
     {
       id: 3,
-      title: "MongoDB Quiz",
+      title: "MongoDB",
       topic: "Database",
       difficulty: "Advanced",
       category: "mongodb",
+      questions: [],
+    },
+    {
+      id: 5,
+      title: "HTML",
+      topic: "Web Development",
+      difficulty: "Advanced",
+      category: "html",
+      questions: [],
+    },
+    {
+      id: 6,
+      title: "C++",
+      topic: "Programming",
+      difficulty: "Advanced",
+      category: "html",
+      questions: [],
+    },
+    {
+      id: 7,
+      title: "My SQL",
+      topic: "Database",
+      difficulty: "Advanced",
+      category: "html",
       questions: [],
     },
   ]);
@@ -166,7 +190,7 @@ export default function Home() {
           )}
 
           <h2 className="text-2xl font-semibold mb-6 text-gray-800">
-            Available Quizzes
+            Available Questions
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {quizzes.map((quiz) => (
@@ -249,7 +273,7 @@ export default function Home() {
               <h3 className="font-semibold text-indigo-800 mb-2">
                 Exam Summary
               </h3>
-              <p className="text-gray-700">Quiz: {activeQuiz.title}</p>
+              <p className="text-gray-700">Exam: {activeQuiz.title}</p>
               <p className="text-gray-700">
                 Questions Answered: {Object.keys(userAnswers).length} of{" "}
                 {questions.length}
