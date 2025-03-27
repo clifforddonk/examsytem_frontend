@@ -237,7 +237,7 @@ export default function Home() {
                         </svg>
                       ) : null}
                     </div>
-                    <span className="text-gray-700">{option}</span>
+                    <span className="text-gray-800">{option}</span>
                   </div>
                 </div>
               ))}
