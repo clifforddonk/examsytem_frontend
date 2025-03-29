@@ -421,7 +421,7 @@ export default function Home() {
             </div>
             <button
               onClick={startNewQuiz}
-              className="ml-4 text-gray-500 hover:text-gray-700 cursor-pointer"
+              className="ml-5 text-gray-500 hover:text-gray-700 cursor-pointer"
             >
               Exit Exam
             </button>
